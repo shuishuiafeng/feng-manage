@@ -1,0 +1,11 @@
+server:
+  port: 8762
+
+spring:
+  application:
+    name: server-user
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${eureka.client.service-url.default-zone}

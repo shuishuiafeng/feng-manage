@@ -6,6 +6,7 @@
     <modules>
         <module>manage-api</module>
         <module>manage-assist</module>
+        <module>manage-server</module>
     </modules>
     <groupId>com.xiaofeng.manage</groupId>
     <artifactId>feng-manage</artifactId>
@@ -49,6 +50,8 @@
         <validation.validation-api.version>2.0.1.Final</validation.validation-api.version>
         <!-- 模板引擎 -->
         <org.freemarker.freemarker.version>2.3.28</org.freemarker.freemarker.version>
+        <!-- 项目版本 -->
+        <feng.manage.version>${project.version}</feng.manage.version>
     </properties>
 
     <!-- 统一依赖版本控制，子模块只继承版本,需要声明依赖 -->
