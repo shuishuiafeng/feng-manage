@@ -1,0 +1,29 @@
+# 指定服务注册中心项目端口号
+server:
+  port: 8761
+
+spring:
+  application:
+    name: eureka-server
+  security: # 为spring security设置对应的用户名和密码
+    user:
+      name: ${spring.security.user.name}
+      password: ${spring.security.user.password}
+
+eureka:
+  instance:
+    hostname: localhost #eureka服务端的实例名称
+  client:
+    register-with-eureka: false #flase表示不向注册中心注册自己
+    fetch-registry: false  #false表示自己端就是注册中心，表示是否从eureka服务器获取注册信息
+    service-url:
+      # defaultZone是设置eureka服务器所在的地址，查询服务和注册服务都需要依赖这个地址;设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址。
+      defaultZone: ${eureka.client.service-url.default-zone}
+
+#==============================================
+#-----            日志模块配置         --------
+#==============================================
+logging:
+  config: classpath:logback.xml
+  level: # 其实这一块应该被上面的logback.xml同样覆盖了吧
+    root: WARN

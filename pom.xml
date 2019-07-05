@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>manage-api</module>
+        <module>manage-assist</module>
+    </modules>
+    <groupId>com.xiaofeng.manage</groupId>
+    <artifactId>feng-manage</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>feng-manage</name>
+    <description>Demo project for Spring Boot</description>
+
+    <properties>
+        <!-- ************************基本属性配置********************** -->
+        <!-- JDK版本管理 -->
+        <java.version>1.8</java.version>
+        <!-- 编码设置 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <docker.image.prefix>${project.groupId}</docker.image.prefix>
+        <!-- ************************依赖版本配置********************** -->
+        <!--spring boot 全家桶版本-->
+        <spring.boot.version>2.0.2.RELEASE</spring.boot.version>
+        <!--spring cloud全家桶版本-->
+        <spring.cloud.version>Finchley.SR1</spring.cloud.version>
+        <!--spring-mybatis-->
+        <mybatis.spring.version>1.3.0</mybatis.spring.version>
+        <!-- ModelMapper -->
+        <org.modelmapp.version>2.1.1</org.modelmapp.version>
+        <!-- jackson 版本,最好使用2.9.5以上的版本-->
+        <com.fasterxml.jackson.core.jackson.version>2.9.8</com.fasterxml.jackson.core.jackson.version>
+        <!-- ${project.version}表示当前项目的版本 -->
+        <feng.manage.version>${project.version}</feng.manage.version>
+        <!-- Mybatis Plus -->
+        <com.baomidou.mybatis.plus.boot.starter.version>2.3</com.baomidou.mybatis.plus.boot.starter.version>
+        <!--阿里 Druid 数据库连接池-->
+        <com.alibaba.druid.version>1.1.12</com.alibaba.druid.version>
+        <!-- Sharding JDB -->
+        <io.shardingsphere.sharding.jdbc.spring.boot.start.version>3.1.0</io.shardingsphere.sharding.jdbc.spring.boot.start.version>
+        <!-- Sharding JDB  事务-->
+        <io.shardingsphere.sharding.transaction.spring.boot.start.version>3.1.0</io.shardingsphere.sharding.transaction.spring.boot.start.version>
+        <!-- Web Servlet 依赖 -->
+        <compile.javax.servlet.javax.servlet.api.version>4.0.1</compile.javax.servlet.javax.servlet.api.version>
+        <!-- commons-beanutils -->
+        <commons.beanutils.version>1.9.3</commons.beanutils.version>
+        <!-- validation-api -->
+        <validation.validation-api.version>2.0.1.Final</validation.validation-api.version>
+        <!-- 模板引擎 -->
+        <org.freemarker.freemarker.version>2.3.28</org.freemarker.freemarker.version>
+    </properties>
+
+    <!-- 统一依赖版本控制，子模块只继承版本,需要声明依赖 -->
+    <dependencyManagement>
+        <dependencies>
+            <!--
+            ============================================================================================================
+            ==================================            基础依赖版本配置             =================================
+            ============================================================================================================
+            -->
+            <!-- spring boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.spring.version}</version>
+            </dependency>
+            <!--Mybatis Plus-->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${com.baomidou.mybatis.plus.boot.starter.version}</version>
+            </dependency>
+            <!-- 使用阿里 Druid 数据库连接池-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${com.alibaba.druid.version}</version>
+            </dependency>
+            <!--配置Sharding JDBC-->
+            <dependency>
+                <groupId>io.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-spring-boot-starter</artifactId>
+                <version>${io.shardingsphere.sharding.jdbc.spring.boot.start.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.shardingsphere</groupId>
+                <artifactId>sharding-transaction-spring-boot-starter</artifactId>
+                <version>${io.shardingsphere.sharding.transaction.spring.boot.start.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.shardingsphere</groupId>
+                <artifactId>sharding-jdbc-orchestration-spring-boot-starter</artifactId>
+                <version>${io.shardingsphere.sharding.transaction.spring.boot.start.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.shardingsphere</groupId>
+                <artifactId>sharding-orchestration-reg-zookeeper-curator</artifactId>
+                <version>${io.shardingsphere.sharding.transaction.spring.boot.start.version}</version>
+            </dependency>
+            <!-- spring sleuth -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-sleuth</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <!-- spring zipkin -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zipkin</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <!--
+            ============================================================================================================
+            ==================================            定制插件版本配置             =================================
+            ============================================================================================================
+             -->
+            <dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>${org.modelmapp.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${com.fasterxml.jackson.core.jackson.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${com.fasterxml.jackson.core.jackson.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${com.fasterxml.jackson.core.jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${compile.javax.servlet.javax.servlet.api.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <!--代码生成-->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${org.apache.velocity.velocity.engine.core.version}</version>
+            </dependency>
+            <!-- 模板引擎，需要指定 mpg.setTemplateEngine(new FreemarkerTemplateEngine()); -->
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${org.freemarker.freemarker.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-framework</artifactId>
+                <version>${org.apache.curator.curator.parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>${org.apache.curator.curator.parent.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dodomall</groupId>
+                <artifactId>data-message-common</artifactId>
+                <version>${dodomall.message.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dodomall</groupId>
+                <artifactId>data-transmission-common</artifactId>
+                <version>${dodomall.message.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter</artifactId>-->
+        <!--</dependency>-->
+        <!--自定义配置管理-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--开发工具配置-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- 单元测试工具配置-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- Maven -P 读取配置 -->
+    <profiles>
+        <!-- 本地环境 -->
+        <profile>
+            <id>local</id>
+            <properties>
+                <package.environment>local</package.environment>
+            </properties>
+            <activation>
+                <!--默认启用该配置-->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <!-- 研发环境 -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <package.environment>dev</package.environment>
+            </properties>
+        </profile>
+        <!--测试环境-->
+        <profile>
+            <id>test</id>
+            <properties>
+                <package.environment>test</package.environment>
+            </properties>
+        </profile>
+        <!--生产环境-->
+        <profile>
+            <id>online</id>
+            <properties>
+                <package.environment>online</package.environment>
+            </properties>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <!-- 指定maven编译的jdk版本,如果不指定,maven3默认用jdk 1.5 maven2默认用jdk1.3 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source> <!-- 源代码使用的JDK版本 -->
+                    <target>${java.version}</target> <!-- 需要生成的目标class文件的编译版本 -->
+                    <encoding>${project.build.sourceEncoding}</encoding> <!-- 字符集编码 -->
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <!-- 源码打包：父模块中不一定有效，可能需要配到具体项目模块 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 生成Actuator使用的构建信息文件build-info.properties -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 实现由java源代码直接到docker镜像 -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>1.3.6</version>
+                <executions>
+                    <execution>
+                        <id>package</id>
+                        <phase>package</phase>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <version>${project.version}</version>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                    <buildArgs>
+                        <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                    </buildArgs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- 发现插件的远程仓库（这里是私服）配置 -->
+    <pluginRepositories>
+        <pluginRepository>
+            <!--如何处理远程仓库里快照版本的下载-->
+            <snapshots>
+                <!--true或者false表示该仓库是否为下载某种类型构件（发布版，快照版）开启。  -->
+                <enabled>true</enabled>
+                <!--该元素指定更新发生的频率。Maven会比较本地POM和远程POM的时间戳。这里的选项是：always（一直），daily（默认，每日），interval：X（这里X是以分钟为单位的时间间隔），或者never（从不）。 -->
+                <updatePolicy>always</updatePolicy>
+                <!--当Maven验证构件校验文件失败时该怎么做-ignore（忽略），fail（失败），或者warn（警告）。-->
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+            <id>maven-panda</id><!--远程仓库唯一标识-->
+            <name>panda</name><!--远程仓库名称 -->
+            <url>http://192.168.1.246/repository/maven-panda-group/</url><!--远程仓库URL，按protocol://hostname/path形式 -->
+        </pluginRepository>
+        <pluginRepository>
+            <snapshots/>
+            <id>maven-panda-snapshot</id>
+            <name>snapshot</name>
+            <url>http://192.168.1.246/repository/maven-panda-group/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <!--远程仓库列表，它是Maven用来填充构建系统本地仓库所使用的一组远程项目。（这里配置也是使用的私服） -->
+    <repositories>
+        <repository>
+            <id>maven-panda</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <name>panda</name>
+            <url>http://192.168.1.246/repository/maven-panda-group/</url>
+        </repository>
+    </repositories>
+    <!-- 使用distributionManagement将项目打包上传到nexus私服 -->
+    <distributionManagement>
+        <repository>
+            <id>maven-panda</id>
+            <name>panda</name>
+            <url>http://192.168.1.246/repository/maven-panda-hosted/</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-panda-snapshot</id>
+            <name>snapshot</name>
+            <url>http://192.168.1.246/repository/maven-panda-snapshot/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>
