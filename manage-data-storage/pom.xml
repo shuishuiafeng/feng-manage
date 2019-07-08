@@ -16,4 +16,13 @@
         <module>manage-data-storage-user</module>
         <module>manage-data-storage-configuration</module>
     </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <artifactId>manage-data-storage-configuration</artifactId>
+                <groupId>com.xiaofeng.manage</groupId>
+                <version>${feng.manage.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

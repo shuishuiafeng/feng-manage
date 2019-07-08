@@ -133,4 +133,77 @@ public class FengManageAutoGenerator extends AutoGenerator {
         }
         return parent + "." + subPackage;
     }
+    // ==================================  相关配置  ==================================
+
+    public DataSourceConfig getDataSource() {
+        return dataSource;
+    }
+
+    public AutoGenerator setDataSource(DataSourceConfig dataSource) {
+        this.dataSource = dataSource;
+        return this;
+    }
+
+    public StrategyConfig getStrategy() {
+        return strategy;
+    }
+
+    public AutoGenerator setStrategy(StrategyConfig strategy) {
+        this.strategy = strategy;
+        return this;
+    }
+
+    public PackageConfig getPackageInfo() {
+        return packageInfo;
+    }
+
+    public AutoGenerator setPackageInfo(PackageConfig packageInfo) {
+        this.packageInfo = packageInfo;
+        return this;
+    }
+
+    public TemplateConfig getTemplate() {
+        return template;
+    }
+
+    public AutoGenerator setTemplate(TemplateConfig template) {
+        this.template = template;
+        return this;
+    }
+
+    public ConfigBuilder getConfig() {
+        return config;
+    }
+
+    public AutoGenerator setConfig(ConfigBuilder config) {
+        this.config = config;
+        return this;
+    }
+
+    public GlobalConfig getGlobalConfig() {
+        return globalConfig;
+    }
+
+    public AutoGenerator setGlobalConfig(GlobalConfig globalConfig) {
+        this.globalConfig = globalConfig;
+        return this;
+    }
+
+    public InjectionConfig getCfg() {
+        return injectionConfig;
+    }
+
+    public AutoGenerator setCfg(InjectionConfig injectionConfig) {
+        this.injectionConfig = injectionConfig;
+        return this;
+    }
+
+    public AbstractTemplateEngine getTemplateEngine() {
+        return templateEngine;
+    }
+
+    public AutoGenerator setTemplateEngine(AbstractTemplateEngine templateEngine) {
+        this.templateEngine = templateEngine;
+        return this;
+    }
 }

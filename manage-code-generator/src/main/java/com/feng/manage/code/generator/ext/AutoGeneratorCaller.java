@@ -25,9 +25,9 @@ public class AutoGeneratorCaller {
      */
     public static String[] TABLES = new String[]{""};
 
-    public static final String DB_URL = "jdbc:mysql://192.168.1.138:3306/hh_xds?useSSL=false";
-    public static final String DB_USERNAME = "mysql";
-    public static final String DB_PWD = "31415926";
+    public static final String DB_URL = "jdbc:mysql://localhost:3306/feng_manage?useSSL=false";
+    public static final String DB_USERNAME = "root";
+    public static final String DB_PWD = "123456";
     public static final String DB_DRIVER = Driver.class.getName();
 
     public static void doExec(@Nullable String authName, ItemEnum itemEnum, String... tables) {

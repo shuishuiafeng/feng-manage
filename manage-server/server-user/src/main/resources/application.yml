@@ -1,5 +1,7 @@
 server:
   port: 8762
+  servlet:
+    context-path: /server-user
 
 spring:
   application:
@@ -14,4 +16,12 @@ eureka:
   client:
     service-url:
       defaultZone: ${eureka.client.service-url.default-zone}
+
+mybatis-plus:
+  global-config:
+    db-column-underline: true
+    logic-delete-value: 2
+    logic-not-delete-value: 1
+    refresh-mapper: true
+  mapper-locations: classpath:com/feng/manage/data/storage/user/mapper/**/*.xml
 
