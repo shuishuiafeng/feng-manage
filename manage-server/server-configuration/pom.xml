@@ -13,6 +13,12 @@
     <artifactId>server-configuration</artifactId>
 
     <dependencies>
+        <!-- eureka-client 不包含Tomcat的依赖，所以容器无法创建一些实例，从而导致项目无法启动，所以需要手动加入 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- 引入eureka-client依赖-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
