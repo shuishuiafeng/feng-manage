@@ -8,32 +8,30 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>manage-server</artifactId>
+    <artifactId>manage-code-generator</artifactId>
     <description>
-        各种服务微服务
+        代码生成工具
     </description>
-    <modules>
-        <module>server-user</module>
-        <module>server-configuration</module>
-    </modules>
-    <!-- 针对项目中其他微服务的依赖配置 -->
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.xiaofeng.manage</groupId>
-                <artifactId>server-configuration</artifactId>
-                <version>${feng.manage.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.xiaofeng.manage</groupId>
-                <artifactId>manage-data-storage-user</artifactId>
+                <artifactId>manage-data-storage-configuration</artifactId>
                 <version>${feng.manage.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
+    <dependencies>
+        <dependency>
+            <groupId>com.xiaofeng.manage</groupId>
+            <artifactId>manage-data-storage-configuration</artifactId>
+        </dependency>
+        <!--代码生成-->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>

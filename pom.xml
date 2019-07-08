@@ -7,6 +7,9 @@
         <module>manage-api</module>
         <module>manage-assist</module>
         <module>manage-server</module>
+        <module>manage-admin</module>
+        <module>manage-data-storage</module>
+        <module>manage-code-generator</module>
     </modules>
     <groupId>com.xiaofeng.manage</groupId>
     <artifactId>feng-manage</artifactId>
@@ -52,6 +55,10 @@
         <org.freemarker.freemarker.version>2.3.28</org.freemarker.freemarker.version>
         <!-- 项目版本 -->
         <feng.manage.version>${project.version}</feng.manage.version>
+        <!-- shiro版本 -->
+        <org.apache.shiro.version>1.2.2</org.apache.shiro.version>
+        <!-- 代码生成 -->
+        <org.apache.velocity.velocity.engine.core.version>2.0</org.apache.velocity.velocity.engine.core.version>
     </properties>
 
     <!-- 统一依赖版本控制，子模块只继承版本,需要声明依赖 -->

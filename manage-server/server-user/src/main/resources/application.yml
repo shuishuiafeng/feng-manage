@@ -4,8 +4,14 @@ server:
 spring:
   application:
     name: server-user
-
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${jdbc.datasource.feng_manage.ip}:${jdbc.datasourc.feng_manage.port}/feng_manage
+    username: ${jdbc.datasourc.feng_manage.username}
+    password: ${jdbc.datasourc.feng_manage.password}
 eureka:
   client:
     service-url:
       defaultZone: ${eureka.client.service-url.default-zone}
+

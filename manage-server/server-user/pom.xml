@@ -18,6 +18,10 @@
             <groupId>com.xiaofeng.manage</groupId>
             <artifactId>server-configuration</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.xiaofeng.manage</groupId>
+            <artifactId>manage-data-storage-user</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
