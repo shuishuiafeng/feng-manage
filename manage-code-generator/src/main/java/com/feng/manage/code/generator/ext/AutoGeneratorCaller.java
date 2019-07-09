@@ -84,6 +84,7 @@ public class AutoGeneratorCaller {
                 .setDbColumnUnderline(true)
                 .setNaming(NamingStrategy.underline_to_camel).setInclude(TABLES)
                 .setRestControllerStyle(true)
+                .setTablePrefix("t_")
         ;
         return strategyConfig;
     }

@@ -1,8 +1,10 @@
 package com.feng.manage.data.storage.user.po;
 
 import com.baomidou.mybatisplus.enums.IdType;
+import java.math.BigDecimal;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
+import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
 
 import com.baomidou.mybatisplus.annotations.Version;
@@ -13,39 +15,40 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- *
+ * 
  * </p>
  *
  * @author Administrator
- * @since 2019-07-08
+ * @since 2019-07-09
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class TUser implements Serializable {
+@TableName("t_permission")
+public class Permission implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
     private String createBy;
     private Date createTime;
+    private Integer delFlag;
     private String updateBy;
     private Date updateTime;
-    private String address;
-    private String avatar;
     private String description;
-    private String email;
-    private String mobile;
-    private String nickName;
-    private String password;
-    private Integer sex;
-    private Integer status;
+    private String name;
+    private Integer parentId;
     private Integer type;
-    private String username;
-    private Integer delFlag;
-    private String street;
-    private String passStrength;
+    private BigDecimal sortOrder;
+    private String component;
+    private String path;
+    private String title;
+    private String icon;
+    private Integer level;
+    private String buttonType;
+    private Integer status;
+    private String url;
 
 
 }

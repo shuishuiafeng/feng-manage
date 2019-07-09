@@ -25,4 +25,17 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <resources>
+            <resource>
+                <!-- copy 一下 mybatis 的Xml文件 否则编译时候会忽略mapper.xml啥啥的-->
+                <filtering>false</filtering>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 </project>

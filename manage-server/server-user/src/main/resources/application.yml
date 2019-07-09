@@ -12,6 +12,11 @@ spring:
     url: jdbc:mysql://${jdbc.datasource.feng_manage.ip}:${jdbc.datasourc.feng_manage.port}/feng_manage
     username: ${jdbc.datasourc.feng_manage.username}
     password: ${jdbc.datasourc.feng_manage.password}
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 3000ms
 eureka:
   client:
     service-url:

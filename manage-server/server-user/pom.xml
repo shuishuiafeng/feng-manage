@@ -22,7 +22,25 @@
             <groupId>com.xiaofeng.manage</groupId>
             <artifactId>manage-data-storage-user</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
     </dependencies>
+
+
     <build>
         <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
         <outputDirectory>${project.basedir}/target/classes</outputDirectory>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.feng.manage.data.storage.user.mapper.ext.UserMapperExt">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Search_Column_List">
+        u.id, u.create_by, u.create_time, u.update_by, u.update_time, u.address, u.avatar, u.description, u.email, u.mobile, u.nick_name, u.password, u.sex, u.status, u.type, u.username, u.del_flag, u.street, u.pass_strength, u.salt,r.id as role_id, r.name as role_name,p.id as permission_id, p.name as permission_name,
+        p.component as permission_component, p.path as permission_path, p.parent_id as permission_parent_id,p.sort_order as permission_sort_order,p.level as permission_level
+    </sql>
+
+    <select id="getUserExtByUserName" resultMap="userExtDetail">
+        select <include refid="Search_Column_List" />
+        from t_user u inner join t_user_role m on m.user_id=u.id
+        inner join t_role r on r.id=m.role_id
+        inner join t_role_permission m1 on m1.role_id=r.id
+        inner join t_permission p on m1.permission_id=p.id
+        where u.username=#{username}
+    </select>
+
+    <resultMap id="userExtDetail" type="com.feng.manage.data.storage.user.po.ext.UserExt">
+        <id column="id" property="id" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="address" property="address" />
+        <result column="avatar" property="avatar" />
+        <result column="description" property="description" />
+        <result column="email" property="email" />
+        <result column="mobile" property="mobile" />
+        <result column="nick_name" property="nickName" />
+        <result column="password" property="password" />
+        <result column="sex" property="sex" />
+        <result column="status" property="status" />
+        <result column="type" property="type" />
+        <result column="username" property="username" />
+        <result column="del_flag" property="delFlag" />
+        <result column="street" property="street" />
+        <result column="pass_strength" property="passStrength" />
+        <result column="salt" property="salt" />
+        <collection property="roles" ofType="com.feng.manage.data.storage.user.po.ext.RoleExt">
+            <id property="id" column="role_id"/>
+            <result property="name" column="role_name"/>
+            <collection property="permissions" ofType="com.feng.manage.data.storage.user.po.Permission">
+                <id property="id" column="permission_id"/>
+                <result property="name" column="permission_name"/>
+                <result property="component" column="permission_component"/>
+                <result property="path" column="permission_path"/>
+                <result property="parentId" column="permission_parent_id"/>
+                <result property="sortOrder" column="permission_sort_order"/>
+                <result property="level" column="permission_level"/>
+            </collection>
+        </collection>
+    </resultMap>
+
+</mapper>

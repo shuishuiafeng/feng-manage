@@ -10,6 +10,7 @@
         <module>manage-admin</module>
         <module>manage-data-storage</module>
         <module>manage-code-generator</module>
+        <module>manage-common</module>
     </modules>
     <groupId>com.xiaofeng.manage</groupId>
     <artifactId>feng-manage</artifactId>
@@ -59,6 +60,8 @@
         <org.apache.shiro.version>1.2.2</org.apache.shiro.version>
         <!-- 代码生成 -->
         <org.apache.velocity.velocity.engine.core.version>2.0</org.apache.velocity.velocity.engine.core.version>
+        <!-- redis版本 -->
+        <org.springframework.boot.data.redis.version>2.0.6.RELEASE</org.springframework.boot.data.redis.version>
     </properties>
 
     <!-- 统一依赖版本控制，子模块只继承版本,需要声明依赖 -->

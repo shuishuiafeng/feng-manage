@@ -19,7 +19,7 @@ public class CodeGenerator {
     public static final String AUTH_NAME = new SystemAuthNameGeneration().name();
 
     public static void main(String[] args) {
-        AutoGeneratorCaller.doExec(AUTH_NAME, item, "t_user");
+        AutoGeneratorCaller.doExec(AUTH_NAME, item, "t_permission");
     }
 
 }

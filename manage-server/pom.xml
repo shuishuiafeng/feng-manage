@@ -22,6 +22,12 @@
     <!-- 针对项目中其他微服务的依赖配置 -->
     <dependencyManagement>
         <dependencies>
+            <!--店多多基础依赖-->
+            <dependency>
+                <artifactId>manage-common</artifactId>
+                <groupId>com.xiaofeng.manage</groupId>
+                <version>${feng.manage.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.xiaofeng.manage</groupId>
                 <artifactId>server-configuration</artifactId>
@@ -31,6 +37,26 @@
                 <groupId>com.xiaofeng.manage</groupId>
                 <artifactId>manage-data-storage-user</artifactId>
                 <version>${feng.manage.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-web</artifactId>
+                <version>${org.apache.shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${org.apache.shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-core</artifactId>
+                <version>${org.apache.shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${org.springframework.boot.data.redis.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

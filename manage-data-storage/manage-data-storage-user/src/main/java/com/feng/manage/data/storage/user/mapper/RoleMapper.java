@@ -1,6 +1,6 @@
 package com.feng.manage.data.storage.user.mapper;
 
-import com.feng.manage.data.storage.user.po.TUser;
+import com.feng.manage.data.storage.user.po.Role;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * </p>
  *
  * @author Administrator
- * @since 2019-07-08
+ * @since 2019-07-09
  */
-public interface TUserMapper extends BaseMapper<TUser> {
+public interface RoleMapper extends BaseMapper<Role> {
 
 }
