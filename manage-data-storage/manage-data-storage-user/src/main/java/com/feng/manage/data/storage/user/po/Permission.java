@@ -1,11 +1,13 @@
 package com.feng.manage.data.storage.user.po;
 
+import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.enums.IdType;
 import java.math.BigDecimal;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import java.io.Serializable;
+import java.util.List;
 
 import com.baomidou.mybatisplus.annotations.Version;
 
@@ -15,7 +17,7 @@ import lombok.experimental.Accessors;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author Administrator
@@ -43,12 +45,14 @@ public class Permission implements Serializable {
     private BigDecimal sortOrder;
     private String component;
     private String path;
+    private String permission;
     private String title;
     private String icon;
     private Integer level;
     private String buttonType;
     private Integer status;
     private String url;
-
+    @TableField(exist = false)
+    private List<Permission> children;
 
 }

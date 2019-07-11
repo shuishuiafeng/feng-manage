@@ -1,5 +1,6 @@
 package com.feng.manage.data.storage.user.po;
 
+import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
@@ -23,6 +24,7 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
+@TableName("t_user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;

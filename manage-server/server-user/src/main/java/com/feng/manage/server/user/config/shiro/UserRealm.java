@@ -45,7 +45,7 @@ public class UserRealm extends AuthorizingRealm {
         for(RoleExt role : userExt.getRoles()) {
             authorizationInfo.addRole(role.getName());
             for(Permission permission:role.getPermissions()){
-                authorizationInfo.addStringPermission(permission.getName());
+                authorizationInfo.addStringPermission(permission.getPermission());
             }
         }
         return authorizationInfo;

@@ -5,7 +5,7 @@
     <!-- 通用查询结果列 -->
     <sql id="Search_Column_List">
         u.id, u.create_by, u.create_time, u.update_by, u.update_time, u.address, u.avatar, u.description, u.email, u.mobile, u.nick_name, u.password, u.sex, u.status, u.type, u.username, u.del_flag, u.street, u.pass_strength, u.salt,r.id as role_id, r.name as role_name,p.id as permission_id, p.name as permission_name,
-        p.component as permission_component, p.path as permission_path, p.parent_id as permission_parent_id,p.sort_order as permission_sort_order,p.level as permission_level
+        p.component as permission_component, p.path as permission_path, p.parent_id as permission_parent_id,p.sort_order as permission_sort_order,p.level as permission_level, p.permission as permission_permission
     </sql>
 
     <select id="getUserExtByUserName" resultMap="userExtDetail">
@@ -49,6 +49,7 @@
                 <result property="parentId" column="permission_parent_id"/>
                 <result property="sortOrder" column="permission_sort_order"/>
                 <result property="level" column="permission_level"/>
+                <result property="permission" column="permission_permission"/>
             </collection>
         </collection>
     </resultMap>

@@ -49,6 +49,7 @@ public class UserController {
         String password = user.getPassword().toLowerCase();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         Subject subject = SecurityUtils.getSubject();
+        subject.logout();
         try{
             subject.login(token);
         }catch (IncorrectCredentialsException ice){

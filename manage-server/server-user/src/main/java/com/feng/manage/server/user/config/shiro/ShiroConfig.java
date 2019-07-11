@@ -1,5 +1,6 @@
 package com.feng.manage.server.user.config.shiro;
 
+import com.feng.manage.server.user.service.IShiroService;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import javax.annotation.Resource;
 import javax.servlet.Filter;
 
 /**
@@ -21,16 +23,22 @@ import javax.servlet.Filter;
 @Configuration
 public class ShiroConfig {
 
+    @Resource
+    private IShiroService shiroService;
+
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        Map<String, String> filterChainDefinitionMap = new HashMap<>();
-        filterChainDefinitionMap.put("/user/login", "anon");
-        filterChainDefinitionMap.put("/**", "user");
+        // 拦截器
+        Map<String, String> filterChainDefinitionMap = shiroService.getFilterChainDefinitionMap();
+//        filterChainDefinitionMap.put("/user/login", "anon");
+//        filterChainDefinitionMap.put("/**", "user");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+        // 过滤器
         Map<String, Filter> filterMap = new HashMap<>();
         filterMap.put("user", new CustomerAuthFilter());
+        filterMap.put("perms", new PermissionAuthorizationFilter());
         shiroFilterFactoryBean.setFilters(filterMap);
         return shiroFilterFactoryBean;
     }
