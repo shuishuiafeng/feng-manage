@@ -35,7 +35,7 @@
         <!-- ModelMapper -->
         <org.modelmapp.version>2.1.1</org.modelmapp.version>
         <!-- jackson 版本,最好使用2.9.5以上的版本-->
-        <com.fasterxml.jackson.core.jackson.version>2.9.8</com.fasterxml.jackson.core.jackson.version>
+        <com.fasterxml.jackson.core.jackson.version>2.10.3</com.fasterxml.jackson.core.jackson.version>
         <!-- ${project.version}表示当前项目的版本 -->
         <feng.manage.version>${project.version}</feng.manage.version>
         <!-- Mybatis Plus -->
